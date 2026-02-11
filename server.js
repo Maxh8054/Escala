@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
+const { Pool } = require('pg'); // Biblioteca para Postgres
 const cors = require('cors');
+const path = require('path'); // Necessário para servir HTML
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,65 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Conexão com MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB Conectado!'))
-  .catch(err => console.error('Erro ao conectar MongoDB:', err));
-
-// Definição do Modelo (Tabela)
-// Vamos salvar tudo em um único documento identificado pelo ID "configuracao_geral"
-const dadosSchema = new mongoose.Schema({
-  _id: String, // Forçamos o ID para ser "lundin_data"
-  atestados: Object,
-  spots: Object,
-  adms: Object,
-  eventos: Object
-}, { _id: false });
-
-const Dados = mongoose.model('Dados', dadosSchema);
-
-// ROTA PARA PEGAR OS DADOS (GET)
-app.get('/api/dados', async (req, res) => {
-  try {
-    // Tenta buscar o documento. Se não existir, cria um vazio.
-    let dados = await Dados.findById('lundin_data');
-    if (!dados) {
-      dados = new Dados({ 
-        _id: 'lundin_data',
-        atestados: { A:[], B:[], C:[], D:[] },
-        spots: { A:[], B:[], C:[], D:[] },
-        adms: { A:[], B:[], C:[], D:[] },
-        eventos: { A:[], B:[], C:[], D:[] }
-      });
-      await dados.save();
-    }
-    res.json(dados);
-  } catch (error) {
-    res.status(500).json({ erro: 'Erro ao buscar dados' });
-  }
-});
-
-// ROTA PARA SALVAR OS DADOS (POST)
-app.post('/api/dados', async (req, res) => {
-  try {
-    const { atestados, spots, adms, eventos } = req.body;
-
-    // Atualiza o documento existente
-    await Dados.findByIdAndUpdate('lundin_data', {
-      atestados,
-      spots,
-      adms,
-      eventos
-    }, { upsert: true, new: true });
-
-    res.json({ mensagem: 'Dados salvos com sucesso!' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ erro: 'Erro ao salvar dados' });
-  }
-});
-// Configurar para servir arquivos estáticos (seu HTML)
-const path = require('path');
+// Configurar para servir arquivos estáticos (seu HTML na pasta public)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Rota para a raiz do site ("/") retornar o index.html
@@ -76,7 +19,68 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Iniciar servidor
+// Conexão com PostgreSQL
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false 
+  }
+});
+
+// Inicialização do Banco
+const initDb = async () => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS escala_data (
+        id SERIAL PRIMARY KEY,
+        dados JSONB NOT NULL
+      );
+    `);
+    
+    const res = await pool.query('SELECT * FROM escala_data WHERE id = 1');
+    if (res.rows.length === 0) {
+      const initialData = {
+        atestados: { A: [], B: [], C: [], D: [] },
+        spots: { A: [], B: [], C: [], D: [] },
+        adms: { A: [], B: [], C: [], D: [] },
+        eventos: { A: [], B: [], C: [], D: [] }
+      };
+      await pool.query('INSERT INTO escala_data (id, dados) VALUES ($1, $2)', [1, initialData]);
+      console.log('Banco inicializado.');
+    }
+  } catch (err) {
+    console.error('Erro no DB:', err);
+  }
+};
+
+initDb();
+
+// ROTA GET
+app.get('/api/dados', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT dados FROM escala_data WHERE id = 1');
+    if (result.rows.length > 0) {
+      res.json(result.rows[0].dados);
+    } else {
+      res.json({ atestados: {}, spots: {}, adms: {}, eventos: {} });
+    }
+  } catch (error) {
+    res.status(500).json({ erro: 'Erro ao buscar' });
+  }
+});
+
+// ROTA POST
+app.post('/api/dados', async (req, res) => {
+  try {
+    const { atestados, spots, adms, eventos } = req.body;
+    const dados = { atestados, spots, adms, eventos };
+    await pool.query('UPDATE escala_data SET dados = $1 WHERE id = 1', [dados]);
+    res.json({ mensagem: 'Salvo!' });
+  } catch (error) {
+    res.status(500).json({ erro: 'Erro ao salvar' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
