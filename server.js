@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
+const { Pool } = require('pg'); // Biblioteca para conectar ao Postgres
 const cors = require('cors');
 
 const app = express();
@@ -10,40 +10,56 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Conexão com MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB Conectado!'))
-  .catch(err => console.error('Erro ao conectar MongoDB:', err));
+// Conexão com PostgreSQL do Render
+// O Render injeta automaticamente a variável DATABASE_URL
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false // Necessário para conexão externa segura no Render
+  }
+});
 
-// Definição do Modelo (Tabela)
-// Vamos salvar tudo em um único documento identificado pelo ID "configuracao_geral"
-const dadosSchema = new mongoose.Schema({
-  _id: String, // Forçamos o ID para ser "lundin_data"
-  atestados: Object,
-  spots: Object,
-  adms: Object,
-  eventos: Object
-}, { _id: false });
+// Inicialização: Criar tabela se não existir
+const initDb = async () => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS escala_data (
+        id SERIAL PRIMARY KEY,
+        dados JSONB NOT NULL
+      );
+    `);
+    
+    // Verifica se já tem dados, se não, insere o inicial
+    const res = await pool.query('SELECT * FROM escala_data WHERE id = 1');
+    if (res.rows.length === 0) {
+      const initialData = {
+        atestados: { A: [], B: [], C: [], D: [] },
+        spots: { A: [], B: [], C: [], D: [] },
+        adms: { A: [], B: [], C: [], D: [] },
+        eventos: { A: [], B: [], C: [], D: [] }
+      };
+      await pool.query('INSERT INTO escala_data (id, dados) VALUES ($1, $2)', [1, initialData]);
+      console.log('Banco de dados inicializado com sucesso.');
+    }
+  } catch (err) {
+    console.error('Erro ao inicializar banco:', err);
+  }
+};
 
-const Dados = mongoose.model('Dados', dadosSchema);
+initDb();
 
 // ROTA PARA PEGAR OS DADOS (GET)
 app.get('/api/dados', async (req, res) => {
   try {
-    // Tenta buscar o documento. Se não existir, cria um vazio.
-    let dados = await Dados.findById('lundin_data');
-    if (!dados) {
-      dados = new Dados({ 
-        _id: 'lundin_data',
-        atestados: { A:[], B:[], C:[], D:[] },
-        spots: { A:[], B:[], C:[], D:[] },
-        adms: { A:[], B:[], C:[], D:[] },
-        eventos: { A:[], B:[], C:[], D:[] }
-      });
-      await dados.save();
+    const result = await pool.query('SELECT dados FROM escala_data WHERE id = 1');
+    if (result.rows.length > 0) {
+      res.json(result.rows[0].dados);
+    } else {
+      // Fallback caso algo dê errado na init
+      res.json({ atestados: {}, spots: {}, adms: {}, eventos: {} });
     }
-    res.json(dados);
   } catch (error) {
+    console.error('Erro ao buscar dados:', error);
     res.status(500).json({ erro: 'Erro ao buscar dados' });
   }
 });
@@ -52,18 +68,14 @@ app.get('/api/dados', async (req, res) => {
 app.post('/api/dados', async (req, res) => {
   try {
     const { atestados, spots, adms, eventos } = req.body;
+    const dados = { atestados, spots, adms, eventos };
 
-    // Atualiza o documento existente
-    await Dados.findByIdAndUpdate('lundin_data', {
-      atestados,
-      spots,
-      adms,
-      eventos
-    }, { upsert: true, new: true });
-
+    // Atualiza a linha de ID 1
+    await pool.query('UPDATE escala_data SET dados = $1 WHERE id = 1', [dados]);
+    
     res.json({ mensagem: 'Dados salvos com sucesso!' });
   } catch (error) {
-    console.error(error);
+    console.error('Erro ao salvar dados:', error);
     res.status(500).json({ erro: 'Erro ao salvar dados' });
   }
 });
@@ -71,4 +83,4 @@ app.post('/api/dados', async (req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
-}); 
+});
