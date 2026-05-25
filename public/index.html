@@ -12,7 +12,6 @@
     max-width: 1400px;
     margin: 0 auto;
   }
-
   h2 { 
     margin: 20px 0; 
     color: #2c3e50; 
@@ -20,7 +19,6 @@
     font-weight: 600;
     font-size: 1.8rem;
   }
-
   .controls {
     display: flex;
     gap: 10px;
@@ -28,7 +26,6 @@
     justify-content: center;
     flex-wrap: wrap;
   }
-
   select, button, textarea {
     padding: 8px 15px;
     border-radius: 6px;
@@ -37,19 +34,16 @@
     cursor: pointer;
     font-size: 0.9rem;
   }
-
   button {
     background: #3498db;
     color: white;
     border: none;
     transition: all 0.2s;
   }
-
   button:hover {
     background: #2980b9;
     transform: translateY(-1px);
   }
-
   .filters-container {
     background: #fff;
     padding: 15px;
@@ -62,19 +56,16 @@
     align-items: center;
     flex-wrap: wrap;
   }
-
   .filter-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-
   .filter-group label {
     font-weight: 600;
     font-size: 0.85rem;
     color: #2c3e50;
   }
-
   table { 
     border-collapse: collapse; 
     width: 100%; 
@@ -85,7 +76,6 @@
     font-size: 0.9rem;
     margin-bottom: 30px;
   }
-
   th, td { 
     border: 1px solid #e0e6ed; 
     padding: 10px 5px; 
@@ -93,7 +83,6 @@
     transition: all 0.2s;
     vertical-align: middle;
   }
-
   th { 
     background-color: #3498db; 
     color: white; 
@@ -102,10 +91,8 @@
     font-weight: 500;
     font-size: 0.9rem;
   }
-
   tr:nth-child(even) { background-color: #f8fafc; }
   tr:hover { background-color: #f1f5f9; }
-
   .month-title {
     text-align: center;
     font-size: 1.5rem;
@@ -113,7 +100,6 @@
     margin-bottom: 15px;
     color: #2c3e50;
   }
-
   .person-card {
     background: #fff;
     border-radius: 8px;
@@ -122,7 +108,6 @@
     text-align: center;
     width: 180px;
   }
-
   .person-photo {
     width: 80px;
     height: 80px;
@@ -130,18 +115,15 @@
     object-fit: cover;
     margin-bottom: 10px;
   }
-
   .person-name {
     font-weight: 600;
     margin-bottom: 5px;
   }
-
   .person-info {
     font-size: 0.8rem;
     color: #666;
     margin-bottom: 5px;
   }
-
   .person-actions {
     display: flex;
     flex-wrap: wrap;
@@ -149,7 +131,6 @@
     justify-content: center;
     margin-top: 10px;
   }
-
   .action-btn {
     padding: 3px 8px;
     font-size: 0.7rem;
@@ -157,13 +138,11 @@
     border-radius: 4px;
     cursor: pointer;
   }
-
   .today {
     position: relative;
     box-shadow: 0 0 0 2px #e74c3c;
     z-index: 1;
   }
-
   .highlight-A { background-color: #ffcdd2; }
   .highlight-B { background-color: #c8e6c9; }
   .highlight-C { background-color: #bbdefb; }
@@ -171,19 +150,16 @@
   .folga { background-color: #e8f5e9; color: #2e7d32; }
   .manha { background-color: #fff8e1; }
   .noite { background-color: #e1f5fe; }
-
   .event-icon {
     font-size: 1rem;
     margin-left: 5px;
     vertical-align: middle;
   }
-
   @media (max-width: 768px) {
     .controls, .filters-container {
       flex-direction: column;
       align-items: center;
     }
-    
     .person-card {
       width: 100%;
       margin-bottom: 15px;
@@ -191,7 +167,6 @@
   }
 </style>
 </head>
-<!-- Add pptxgenjs and html2canvas libraries -->
 <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.11.0/dist/pptxgen.bundle.js"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <body>
@@ -207,11 +182,6 @@
   <div class="filter-group">
     <label>Mês/Ano</label>
     <select id="filter-month">
-      <option value="12/2025">Dezembro/2025</option>
-      <option value="01/2026">Janeiro/2026</option>
-      <option value="02/2026">Fevereiro/2026</option>
-      <option value="03/2026">Março/2026</option>
-      <option value="04/2026">Abril/2026</option>
       <option value="05/2026">Maio/2026</option>
       <option value="06/2026">Junho/2026</option>
       <option value="07/2026">Julho/2026</option>
@@ -220,6 +190,7 @@
       <option value="10/2026">Outubro/2026</option>
       <option value="11/2026">Novembro/2026</option>
       <option value="12/2026">Dezembro/2026</option>
+      <option value="01/2027">Janeiro/2027</option>
     </select>
   </div>
   
@@ -227,8 +198,8 @@
     <label>Turno</label>
     <select id="filter-shift">
       <option value="">Todos</option>
-      <option value="07:00 às 19:00">Manhã (07:00 às 19:00)</option>
-      <option value="19:00 às 07:00">Noite (19:00 às 07:00)</option>
+      <option value="07:00 – 19:00">Manhã (07:00 às 19:00)</option>
+      <option value="19:00 – 07:00">Noite (19:00 às 07:00)</option>
       <option value="Folga">Folga</option>
     </select>
   </div>
@@ -307,23 +278,18 @@
   </div>
 </div>
 
-
 <!-- Tabela de Escala -->
-<div id="month-container" style="overflow-x: auto;">
-  <!-- Tabela será gerada dinamicamente aqui -->
-</div>
+<div id="month-container" style="overflow-x: auto;"></div>
 
-<!-- Modals (Mantidos iguais, apenas adaptação de salvamento) -->
+<!-- Modal Evento -->
 <div id="evento-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
   <div style="background: white; padding: 20px; border-radius: 8px; width: 350px; max-height: 80vh; overflow-y: auto;">
     <h3>Registrar Evento</h3>
     <p id="evento-modal-person" style="margin-bottom: 10px;"></p>
-    
     <div id="evento-history" style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
       <h4 style="margin-bottom: 5px;">Histórico:</h4>
       <div id="evento-list" style="font-size: 0.9rem;"></div>
     </div>
-    
     <div style="margin-bottom: 10px;">
       <label style="display: block; margin-bottom: 5px;">Tipo de Evento:</label>
       <select id="evento-tipo" style="width: 100%; padding: 5px;" onchange="toggleEventoFields()">
@@ -333,32 +299,26 @@
         <option value="ferias">Férias</option>
       </select>
     </div>
-    
     <div style="margin-bottom: 10px;">
       <label style="display: block; margin-bottom: 5px;">Data Início:</label>
       <input type="date" id="evento-start-date" style="width: 100%; padding: 5px;">
     </div>
-    
     <div style="margin-bottom: 10px;">
       <label style="display: block; margin-bottom: 5px;">Data Fim:</label>
       <input type="date" id="evento-end-date" style="width: 100%; padding: 5px;">
     </div>
-    
     <div id="evento-horas-container" style="margin-bottom: 15px;">
       <label style="display: block; margin-bottom: 5px;">Horas (Ignorado para Férias/Folga):</label>
       <input type="number" id="evento-horas" style="width: 100%; padding: 5px;" min="0" placeholder="Horas do evento">
       <div style="margin-top: 5px;">
         <label style="display: inline-flex; align-items: center; margin-right: 15px;">
-          <input type="radio" name="evento-horas-tipo" value="acrescentar" checked style="margin-right: 5px;">
-          Acrescentar
+          <input type="radio" name="evento-horas-tipo" value="acrescentar" checked style="margin-right: 5px;">Acrescentar
         </label>
         <label style="display: inline-flex; align-items: center;">
-          <input type="radio" name="evento-horas-tipo" value="reduzir" style="margin-right: 5px;">
-          Reduzir
+          <input type="radio" name="evento-horas-tipo" value="reduzir" style="margin-right: 5px;">Reduzir
         </label>
       </div>
     </div>
-    
     <div style="display: flex; justify-content: space-between;">
       <button onclick="saveEvento()" style="padding: 5px 10px; background: #FF9800; color: white; border: none; border-radius: 4px;">Salvar</button>
       <button onclick="closeEventoModal()" style="padding: 5px 10px; background: #e74c3c; color: white; border: none; border-radius: 4px;">Cancelar</button>
@@ -366,16 +326,15 @@
   </div>
 </div>
 
+<!-- Modal ADM -->
 <div id="adm-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
   <div style="background: white; padding: 20px; border-radius: 8px; width: 350px; max-height: 80vh; overflow-y: auto;">
     <h3>Registrar Período ADM</h3>
     <p id="adm-modal-person" style="margin-bottom: 10px;"></p>
-    
     <div id="adm-history" style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
       <h4 style="margin-bottom: 5px;">Histórico:</h4>
       <div id="adm-list" style="font-size: 0.9rem;"></div>
     </div>
-    
     <div style="margin-bottom: 10px;">
       <label style="display: block; margin-bottom: 5px;">Data Início:</label>
       <input type="date" id="adm-start-date" style="width: 100%; padding: 5px;">
@@ -399,16 +358,15 @@
   </div>
 </div>
 
+<!-- Modal Spot -->
 <div id="spot-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
   <div style="background: white; padding: 20px; border-radius: 8px; width: 350px; max-height: 80vh; overflow-y: auto;">
     <h3>Registrar Spot</h3>
     <p id="spot-modal-person" style="margin-bottom: 10px;"></p>
-    
     <div id="spot-history" style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
       <h4 style="margin-bottom: 5px;">Histórico:</h4>
       <div id="spot-list" style="font-size: 0.9rem;"></div>
     </div>
-    
     <div style="margin-bottom: 10px;">
       <label style="display: block; margin-bottom: 5px;">Data Início:</label>
       <input type="date" id="spot-start-date" style="width: 100%; padding: 5px;">
@@ -428,16 +386,15 @@
   </div>
 </div>
 
+<!-- Modal Atestado -->
 <div id="atestado-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
   <div style="background: white; padding: 20px; border-radius: 8px; width: 350px; max-height: 80vh; overflow-y: auto;">
     <h3>Registrar Atestado</h3>
     <p id="atestado-modal-person" style="margin-bottom: 10px;"></p>
-    
     <div id="atestado-history" style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
       <h4 style="margin-bottom: 5px;">Histórico:</h4>
       <div id="atestado-list" style="font-size: 0.9rem;"></div>
     </div>
-    
     <div style="margin-bottom: 10px;">
       <label style="display: block; margin-bottom: 5px;">Data Início:</label>
       <input type="date" id="atestado-start-date" style="width: 100%; padding: 5px;">
@@ -446,4360 +403,31 @@
       <label style="display: block; margin-bottom: 5px;">Data Fim:</label>
       <input type="date" id="atestado-end-date" style="width: 100%; padding: 5px;">
     </div>
-
-    <!-- Checkbox Atestado por Hora -->
     <div style="margin-bottom: 10px;">
       <label style="display: flex; align-items: center; cursor: pointer;">
         <input type="checkbox" id="atestado-por-hora" onchange="toggleAtestadoHoras()" style="margin-right: 8px;">
         Atestado por hora
       </label>
     </div>
-
-    <!-- Campo de Horas (Oculto por padrão) -->
     <div id="atestado-horas-div" style="margin-bottom: 15px; display: none;">
       <label style="display: block; margin-bottom: 5px;">Quantidade de Horas:</label>
       <input type="number" id="atestado-horas-input" style="width: 100%; padding: 5px;" min="1" max="12" value="1">
-      <div style="margin-bottom: 15px; color: #666; font-size: 0.8rem; margin-top: 5px;">
-        * Se marcado, reduz apenas as horas informadas (não reduz contagem de dias).
-      </div>
+      <div style="margin-bottom: 15px; color: #666; font-size: 0.8rem; margin-top: 5px;">* Reduz apenas as horas informadas.</div>
     </div>
-    
-    <!-- Texto explicativo para o modo padrão -->
     <div id="atestado-default-text" style="margin-bottom: 15px; color: #666; font-size: 0.85rem; font-style: italic;">
       * Se desmarcado, reduzirá automaticamente 12h/dia e a contagem de dias trabalhados.
     </div>
-    
     <div style="display: flex; justify-content: space-between;">
       <button onclick="saveAtestado()" style="padding: 5px 10px; background: #27ae60; color: white; border: none; border-radius: 4px;">Salvar</button>
       <button onclick="closeAtestadoModal()" style="padding: 5px 10px; background: #e74c3c; color: white; border: none; border-radius: 4px;">Cancelar</button>
     </div>
   </div>
 </div>
+
 <script>
-// Dados JSON da escala (Estáticos)
 const dataReport_Escala_Turno_Lundin = [
   {
     "Cliente": "Lundin Mining",
-    "Data": "01/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/01/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/01/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/01/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/01/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/02/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/02/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/02/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/02/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/03/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/03/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/03/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "31/03/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "01/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "02/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "03/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "04/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "05/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "06/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "07/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "08/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "09/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "10/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "11/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "12/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "13/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "14/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "15/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "16/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "17/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "18/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "19/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "20/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "21/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "22/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "23/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "24/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sexta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "25/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "sábado",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "26/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "domingo",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "27/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "Folga",
-    "Dia_semana": "segunda-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "28/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "terça-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "29/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "Folga",
-    "Dia_semana": "quarta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/04/2026",
-    "Letra": "D",
-    "Colaborador": "Marcelo Gonçalves",
-    "Turno": "07:00 – 19:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/04/2026",
-    "Letra": "A",
-    "Colaborador": "Wesley",
-    "Turno": "19:00 – 07:00",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/04/2026",
-    "Letra": "C",
-    "Colaborador": "Higor Ataides",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
-    "Data": "30/04/2026",
-    "Letra": "B",
-    "Colaborador": "Marcos Paulo",
-    "Turno": "Folga",
-    "Dia_semana": "quinta-feira",
-    "Ano": 2026
-  },
-  {
-    "Cliente": "Lundin Mining",
     "Data": "01/05/2026",
     "Letra": "D",
     "Colaborador": "Marcelo Gonçalves",
@@ -13625,7 +9253,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13634,7 +9262,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13643,7 +9271,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13652,7 +9280,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13661,7 +9289,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13670,7 +9298,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13679,7 +9307,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13688,7 +9316,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13697,7 +9325,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13706,7 +9334,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13715,7 +9343,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13724,7 +9352,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13733,7 +9361,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13742,7 +9370,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13751,7 +9379,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13760,7 +9388,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13769,7 +9397,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13778,7 +9406,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13787,7 +9415,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13796,7 +9424,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13805,7 +9433,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13814,7 +9442,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13823,7 +9451,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13832,7 +9460,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13841,7 +9469,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13850,7 +9478,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13859,7 +9487,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13868,7 +9496,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13877,7 +9505,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13886,7 +9514,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13895,7 +9523,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13904,7 +9532,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13913,7 +9541,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13922,7 +9550,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13931,7 +9559,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13940,7 +9568,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13949,7 +9577,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13958,7 +9586,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13967,7 +9595,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13976,7 +9604,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13985,7 +9613,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -13994,7 +9622,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14003,7 +9631,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14012,7 +9640,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14021,7 +9649,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14030,7 +9658,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14039,7 +9667,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14048,7 +9676,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14057,7 +9685,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14066,7 +9694,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14075,7 +9703,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14084,7 +9712,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14093,7 +9721,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14102,7 +9730,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14111,7 +9739,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14120,7 +9748,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14129,7 +9757,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14138,7 +9766,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14147,7 +9775,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14156,7 +9784,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14165,7 +9793,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14174,7 +9802,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14183,7 +9811,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14192,7 +9820,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14201,7 +9829,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14210,7 +9838,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14219,7 +9847,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14228,7 +9856,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14237,7 +9865,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14246,7 +9874,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14255,7 +9883,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14264,7 +9892,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14273,7 +9901,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14282,7 +9910,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14291,7 +9919,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14300,7 +9928,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14309,7 +9937,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14318,7 +9946,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14327,7 +9955,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14336,7 +9964,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14345,7 +9973,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14354,7 +9982,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14363,7 +9991,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14372,7 +10000,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14381,7 +10009,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14390,7 +10018,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14399,7 +10027,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14408,7 +10036,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14417,7 +10045,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14426,7 +10054,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14435,7 +10063,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14444,7 +10072,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14453,7 +10081,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14462,7 +10090,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14471,7 +10099,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14480,7 +10108,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14489,7 +10117,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14498,7 +10126,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14507,7 +10135,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14516,7 +10144,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "segunda-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14525,7 +10153,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14534,7 +10162,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14543,7 +10171,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14552,7 +10180,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "terça-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14561,7 +10189,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14570,7 +10198,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14579,7 +10207,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14588,7 +10216,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "quarta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14597,7 +10225,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14606,7 +10234,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14615,7 +10243,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14624,7 +10252,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "Folga",
     "Dia_semana": "quinta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14633,7 +10261,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14642,7 +10270,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14651,7 +10279,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14660,7 +10288,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "sexta-feira",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14669,7 +10297,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14678,7 +10306,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14687,7 +10315,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14696,7 +10324,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "Folga",
     "Dia_semana": "sábado",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14705,7 +10333,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Higor Ataides",
     "Turno": "07:00 – 19:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14714,7 +10342,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcos Paulo",
     "Turno": "19:00 – 07:00",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14723,7 +10351,7 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Marcelo Gonçalves",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   },
   {
     "Cliente": "Lundin Mining",
@@ -14732,725 +10360,367 @@ const dataReport_Escala_Turno_Lundin = [
     "Colaborador": "Wesley",
     "Turno": "Folga",
     "Dia_semana": "domingo",
-    "Ano": 2026
+    "Ano": 2027
   }
 ];
 
-// Variáveis globais (Carregadas do servidor)
 let atestados = { A: [], B: [], C: [], D: [] };
 let spots = { A: [], B: [], C: [], D: [] };
 let adms = { A: [], B: [], C: [], D: [] };
 let eventos = { A: [], B: [], C: [], D: [] };
 let currentPerson = '';
 
-// URL do servidor Backend
 const API_URL = '/api/dados';
 
-// --- FUNÇÕES DE API (NOVO) ---
-
-// Carregar dados do servidor ao iniciar
 async function loadDataFromServer() {
-    try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Falha ao carregar dados');
-        const data = await response.json();
-        
-        atestados = data.atestados || { A: [], B: [], C: [], D: [] };
-        spots = data.spots || { A: [], B: [], C: [], D: [] };
-        adms = data.adms || { A: [], B: [], C: [], D: [] };
-        eventos = data.eventos || { A: [], B: [], C: [], D: [] };
-        
-        // Atualizar a interface inicial
-        generateTableFromJSON();
-        calculateHoursWorked();
-    } catch (error) {
-        console.error("Erro ao conectar com servidor:", error);
-        alert("Erro ao carregar dados do servidor. Verifique sua conexão.");
-    }
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error('Falha ao carregar dados');
+    const data = await response.json();
+    atestados = data.atestados || { A: [], B: [], C: [], D: [] };
+    spots = data.spots || { A: [], B: [], C: [], D: [] };
+    adms = data.adms || { A: [], B: [], C: [], D: [] };
+    eventos = data.eventos || { A: [], B: [], C: [], D: [] };
+    generateTableFromJSON();
+    calculateHoursWorked();
+  } catch (error) {
+    console.error("Erro ao conectar com servidor:", error);
+    generateTableFromJSON();
+    calculateHoursWorked();
+  }
 }
 
-// Salvar dados no servidor
 async function saveDataToServer() {
-    try {
-        const payload = { atestados, spots, adms, eventos };
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-        
-        if (!response.ok) throw new Error('Falha ao salvar');
-        
-        // Opcional: Mostrar toast de sucesso
-        // console.log("Dados sincronizados com sucesso.");
-    } catch (error) {
-        console.error("Erro ao salvar dados:", error);
-        alert("Erro ao salvar no servidor. As alterações podem não persistir para outros usuários.");
-    }
+  try {
+    const payload = { atestados, spots, adms, eventos };
+    await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (error) {
+    console.error("Erro ao salvar dados:", error);
+  }
 }
 
-// --- FIM DAS FUNÇÕES DE API ---
+const months = ["JANEIRO","FEVEREIRO","MARÇO","ABRIL","MAIO","JUNHO","JULHO","AGOSTO","SETEMBRO","OUTUBRO","NOVEMBRO","DEZEMBRO"];
 
-const months = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"];
-
-// Função auxiliar para obter ícones de eventos para a tabela
 function getEventIcons(person, dateStr) {
-    let icons = [];
-    // Converter dateStr (DD/MM/YYYY) para padrão (YYYY-MM-DD) para comparação
-    const parts = dateStr.split('/');
-    const standardDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-
-    // 1. Atestados
-    if (atestados[person]) {
-        atestados[person].forEach(ast => {
-            if (standardDate >= ast.startDate && standardDate <= ast.endDate) icons.push('🩺');
-        });
+  let icons = [];
+  const parts = dateStr.split('/');
+  const standardDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+  if (atestados[person]) atestados[person].forEach(ast => { if (standardDate >= ast.startDate && standardDate <= ast.endDate) icons.push('🩺'); });
+  if (spots[person]) spots[person].forEach(sp => { if (standardDate >= sp.startDate && standardDate <= sp.endDate) icons.push('⚡'); });
+  if (eventos[person]) eventos[person].forEach(ev => {
+    if (standardDate >= ev.startDate && standardDate <= ev.endDate) {
+      if (ev.tipo === 'ferias') icons.push('🏖️');
+      else if (ev.tipo === 'viagem') icons.push('✈️');
+      else if (ev.tipo === 'treinamento') icons.push('📚');
+      else if (ev.tipo === 'folga') icons.push('📅');
     }
-
-    // 2. Spots
-    if (spots[person]) {
-        spots[person].forEach(sp => {
-            if (standardDate >= sp.startDate && standardDate <= sp.endDate) icons.push('⚡');
-        });
-    }
-
-    // 3. Eventos (Férias, Viagem, Treinamento, etc)
-    if (eventos[person]) {
-        eventos[person].forEach(ev => {
-            if (standardDate >= ev.startDate && standardDate <= ev.endDate) {
-                if (ev.tipo === 'ferias') icons.push('🏖️');
-                else if (ev.tipo === 'viagem') icons.push('✈️');
-                else if (ev.tipo === 'treinamento') icons.push('📚');
-                else if (ev.tipo === 'folga') icons.push('📅');
-            }
-        });
-    }
-
-    // 4. ADM
-    if (adms[person]) {
-        adms[person].forEach(adm => {
-            if (standardDate >= adm.startDate && standardDate <= adm.endDate) {
-                icons.push('🏢');
-            }
-        });
-    }
-
-    return icons.join(' ');
+  });
+  if (adms[person]) adms[person].forEach(adm => { if (standardDate >= adm.startDate && standardDate <= adm.endDate) icons.push('🏢'); });
+  return icons.join(' ');
 }
 
-// Função para gerar tabela a partir dos dados JSON com filtros
 function generateTableFromJSON() {
   const container = document.getElementById('month-container');
   container.innerHTML = '';
-  
-  // Obter valores dos filtros
   const selectedMonth = document.getElementById('filter-month').value;
   const selectedShift = document.getElementById('filter-shift').value;
   const selectedPerson = document.getElementById('filter-person').value;
-  
-  // Extrair mês e ano do filtro
   const [month, year] = selectedMonth.split('/');
   const monthIndex = parseInt(month) - 1;
   const yearNum = parseInt(year);
-  
-  // Criar título do mês
   const monthTitle = document.createElement('div');
   monthTitle.className = 'month-title';
   monthTitle.textContent = `${months[monthIndex]}/${year}`;
   container.appendChild(monthTitle);
-  
-  // Criar tabela
   const table = document.createElement('table');
-  table.className = 'schedule-table';
-  
-  // Criar cabeçalho
   const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
-  headerRow.className = 'header-row';
-  
-  const headers = ['Data', 'Dia da Semana', 'Letra', 'Colaborador', 'Turno'];
-  headers.forEach(headerText => {
+  ['Data','Dia da Semana','Letra','Colaborador','Turno'].forEach(h => {
     const th = document.createElement('th');
-    th.textContent = headerText;
+    th.textContent = h;
     headerRow.appendChild(th);
   });
-  
   thead.appendChild(headerRow);
   table.appendChild(thead);
-  
-  // Criar corpo da tabela
   const tbody = document.createElement('tbody');
-  
-  // Filtrar dados JSON
   const filteredData = dataReport_Escala_Turno_Lundin.filter(item => {
-    // Converter data para comparação
-    const [day, month, year] = item.Data.split('/');
-    const itemDate = new Date(year, month - 1, day);
-    
-    // Filtrar por mês/ano
-    if (itemDate.getMonth() !== monthIndex || itemDate.getFullYear() !== yearNum) {
-      return false;
-    }
-    
-    // Filtrar por turno
-    if (selectedShift && item.Turno !== selectedShift) {
-      return false;
-    }
-    
-    // Filtrar por colaborador
-    if (selectedPerson && item.Letra !== selectedPerson) {
-      return false;
-    }
-    
+    const [day, m, y] = item.Data.split('/');
+    const itemDate = new Date(y, m - 1, day);
+    if (itemDate.getMonth() !== monthIndex || itemDate.getFullYear() !== yearNum) return false;
+    if (selectedShift && item.Turno !== selectedShift) return false;
+    if (selectedPerson && item.Letra !== selectedPerson) return false;
     return true;
   });
-  
-  // Agrupar por data
   const groupedByDate = {};
   filteredData.forEach(item => {
-    if (!groupedByDate[item.Data]) {
-      groupedByDate[item.Data] = [];
-    }
+    if (!groupedByDate[item.Data]) groupedByDate[item.Data] = [];
     groupedByDate[item.Data].push(item);
   });
-  
-  // Ordenar datas (formato dd/mm/yyyy)
   const sortedDates = Object.keys(groupedByDate).sort((a, b) => {
-    const [dayA, monthA, yearA] = a.split('/');
-    const [dayB, monthB, yearB] = b.split('/');
-    const dateA = new Date(yearA, monthA - 1, dayA);
-    const dateB = new Date(yearB, monthB - 1, dayB);
-    return dateA - dateB;
+    const [dayA, mA, yA] = a.split('/');
+    const [dayB, mB, yB] = b.split('/');
+    return new Date(yA, mA-1, dayA) - new Date(yB, mB-1, dayB);
   });
-  
-  // Adicionar linhas para cada data
   sortedDates.forEach(date => {
     const dayData = groupedByDate[date];
-    
-    // Verificar se é hoje
     const today = new Date();
-    const [day, month, year] = date.split('/');
-    const itemDate = new Date(year, month - 1, day);
-    const isToday = itemDate.getDate() === today.getDate() && 
-                    itemDate.getMonth() === today.getMonth() && 
-                    itemDate.getFullYear() === today.getFullYear();
-    
-    // Adicionar linha para cada item do dia
+    const [day, m, y] = date.split('/');
+    const itemDate = new Date(y, m-1, day);
+    const isToday = itemDate.getDate() === today.getDate() && itemDate.getMonth() === today.getMonth() && itemDate.getFullYear() === today.getFullYear();
     dayData.forEach(item => {
       const tr = document.createElement('tr');
-      if (isToday) {
-        tr.classList.add('today');
-      }
-      
-      // Data
+      if (isToday) tr.classList.add('today');
       const dateCell = document.createElement('td');
       dateCell.textContent = item.Data;
       tr.appendChild(dateCell);
-      
-      // Dia da semana
       const weekdayCell = document.createElement('td');
       weekdayCell.textContent = item.Dia_semana;
       tr.appendChild(weekdayCell);
-      
-      // Letra + ÍCONES (Movido para cá)
       const letterCell = document.createElement('td');
       letterCell.textContent = item.Letra;
       letterCell.classList.add(`highlight-${item.Letra}`);
-      
       const icons = getEventIcons(item.Letra, item.Data);
       if (icons) {
-          const iconSpan = document.createElement('span');
-          iconSpan.className = 'event-icon';
-          iconSpan.innerHTML = icons;
-          letterCell.appendChild(iconSpan);
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'event-icon';
+        iconSpan.innerHTML = icons;
+        letterCell.appendChild(iconSpan);
       }
       tr.appendChild(letterCell);
-      
-      // Colaborador
       const collaboratorCell = document.createElement('td');
       collaboratorCell.textContent = item.Colaborador;
       tr.appendChild(collaboratorCell);
-      
-      // Turno
       const shiftCell = document.createElement('td');
       shiftCell.textContent = item.Turno;
-      
-      // Adicionar classe de estilo baseada no turno
-      if (item.Turno === 'Folga') {
-        shiftCell.classList.add('folga');
-      } else if (item.Turno === '07:00 – 19:00') {
-        shiftCell.classList.add('manha');
-      } else if (item.Turno === '19:00 – 07:00') {
-        shiftCell.classList.add('noite');
-      }
-      
+      if (item.Turno === 'Folga') shiftCell.classList.add('folga');
+      else if (item.Turno === '07:00 – 19:00') shiftCell.classList.add('manha');
+      else if (item.Turno === '19:00 – 07:00') shiftCell.classList.add('noite');
       tr.appendChild(shiftCell);
-      
       tbody.appendChild(tr);
     });
   });
-  
   table.appendChild(tbody);
   container.appendChild(table);
 }
 
-// Função para aplicar filtros
-function applyFilters() {
-  generateTableFromJSON();
-  calculateHoursWorked();
-}
-
-// Função para resetar filtros
+function applyFilters() { generateTableFromJSON(); calculateHoursWorked(); }
 function resetFilters() {
   document.getElementById('filter-month').value = getCurrentMonthYear();
   document.getElementById('filter-shift').value = '';
   document.getElementById('filter-person').value = '';
-  
   generateTableFromJSON();
   calculateHoursWorked();
 }
 
-// Função para obter o mês/ano atual no formato MM/YYYY
 function getCurrentMonthYear() {
   const now = new Date();
   const month = String(now.getMonth() + 1).padStart(2, '0');
-  const year = now.getFullYear();
-  return `${month}/${year}`;
+  return `${month}/${now.getFullYear()}`;
 }
 
-// Funções de captura de tela e geração de PowerPoint
 function captureScreenshot() {
   html2canvas(document.body).then(canvas => {
     const link = document.createElement('a');
     const date = new Date();
-    const timestamp = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}_${date.getHours()}h${date.getMinutes()}`;
-    link.download = `screenshot_${timestamp}.png`;
+    link.download = `screenshot_${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
   });
 }
 
-// Calcular horas trabalhadas com base nos dados JSON
 function calculateHoursWorked() {
   const now = new Date();
-  const currentHour = now.getHours();
-  const currentMinute = now.getMinutes();
-  const currentSecond = now.getSeconds();
-  
-  // Obter mês/ano selecionado
+  const currentTotalMinutes = now.getHours() * 60 + now.getMinutes();
   const selectedMonth = document.getElementById('filter-month').value;
   const [month, year] = selectedMonth.split('/');
   const monthIndex = parseInt(month) - 1;
   const yearNum = parseInt(year);
-  
-  // Verificar se o mês exibido na tela é o mês REAL atual (para lógica de tempo real)
   const isRealCurrentMonth = (now.getMonth() === monthIndex && now.getFullYear() === yearNum);
-  
-  // Converter horário atual para minutos totais desde 00:00 para facilitar comparação
-  const currentTotalMinutes = currentHour * 60 + currentMinute;
-
-  // Contadores
   const workDays = { A: 0, B: 0, C: 0, D: 0 };
   const totalDays = { A: 0, B: 0, C: 0, D: 0 };
-  
-  // FILTRAGEM PARA CÁLCULO: Ignoramos filtros de TURNO e PESSOA aqui.
-  // O cálculo dos Cards deve ser sempre do MÊS INTEIRO para estar correto.
+  const totalSeconds = { A: 0, B: 0, C: 0, D: 0 };
   const calculationData = dataReport_Escala_Turno_Lundin.filter(item => {
-    const [day, m, y] = item.Data.split('/');
-    const itemDate = new Date(y, m - 1, day);
+    const [d, m, y] = item.Data.split('/');
+    const itemDate = new Date(y, m-1, d);
     return itemDate.getMonth() === monthIndex && itemDate.getFullYear() === yearNum;
   });
-  
-  // Inicializar segundos totais
-  const totalSeconds = { A: 0, B: 0, C: 0, D: 0 };
-
-  // 1. Calcular base de trabalho (Escala padrão)
   calculationData.forEach(item => {
     const [day, m, y] = item.Data.split('/');
-    const itemDate = new Date(y, m - 1, day);
-    
-    // Comparar datas (apenas dia, mês, ano)
+    const itemDate = new Date(y, m-1, day);
     const isPast = itemDate < new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const isToday = itemDate.getTime() === new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-    
-    // Contagem de dias no mês (apenas dias escalados, incluindo folgas, para referencia)
-    // Se for dia de trabalho na escala, conta como dia no mês
     if (item.Turno !== 'Folga') {
       totalDays[item.Letra]++;
-    }
-
-    // Calcular horas base
-    if (item.Turno !== 'Folga') {
       let shiftSeconds = 0;
-      
-      // Se for um mês passado (não é o mês real atual), assumimos turno completo
       if (!isRealCurrentMonth) {
-         shiftSeconds = 12 * 3600;
-      } 
-      else {
-        // Lógica para o MÊS ATUAL
+        shiftSeconds = 12 * 3600;
+      } else {
         if (isPast) {
-          // DIA PASSADO
-          if (item.Turno === '07:00 – 19:00') {
-            shiftSeconds = 12 * 3600;
-          } else if (item.Turno === '19:00 – 07:00') {
+          if (item.Turno === '07:00 – 19:00') shiftSeconds = 12 * 3600;
+          else if (item.Turno === '19:00 – 07:00') {
             const yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
             if (itemDate.getTime() === yesterday.getTime()) {
-              if (currentTotalMinutes >= 7 * 60) {
-                shiftSeconds = 12 * 3600;
-              } else {
-                const hoursAfterMidnight = currentTotalMinutes * 60 + currentSecond;
-                shiftSeconds = (5 * 3600) + hoursAfterMidnight;
-              }
-            } else {
-              shiftSeconds = 12 * 3600;
-            }
+              shiftSeconds = currentTotalMinutes >= 7*60 ? 12*3600 : (5*3600 + currentTotalMinutes*60 + now.getSeconds());
+            } else shiftSeconds = 12 * 3600;
           }
-        } 
-        else if (isToday) {
-          // HOJE
+        } else if (isToday) {
           if (item.Turno === '07:00 – 19:00') {
-            if (currentTotalMinutes >= 7 * 60) {
-              if (currentTotalMinutes >= 19 * 60) {
-                shiftSeconds = 12 * 3600;
-              } else {
-                shiftSeconds = (currentTotalMinutes - 7 * 60) * 60 + currentSecond;
-              }
-            }
+            if (currentTotalMinutes >= 7*60) shiftSeconds = currentTotalMinutes >= 19*60 ? 12*3600 : (currentTotalMinutes - 7*60)*60 + now.getSeconds();
           } else if (item.Turno === '19:00 – 07:00') {
-            if (currentTotalMinutes >= 19 * 60) {
-              shiftSeconds = (currentTotalMinutes - 19 * 60) * 60 + currentSecond;
-            }
+            if (currentTotalMinutes >= 19*60) shiftSeconds = (currentTotalMinutes - 19*60)*60 + now.getSeconds();
           }
         }
       }
-      
       totalSeconds[item.Letra] += shiftSeconds;
-      
-      if (isPast || (isToday && shiftSeconds > 0)) {
-        workDays[item.Letra]++;
-      }
+      if (isPast || (isToday && shiftSeconds > 0)) workDays[item.Letra]++;
     }
   });
-  
-  // 2. Aplicar ajustes (Atestados, Spots, Eventos, ADM)
-  ['A', 'B', 'C', 'D'].forEach(person => {
-    
-    // --- ATESTADOS (Loop Data Início -> Fim) ---
-    if (atestados[person]) {
-      atestados[person].forEach(ast => {
-        // Parse seguro de datas para evitar erros de fuso
-        const [sy, sm, sd] = ast.startDate.split('-');
-        const [ey, em, ed] = ast.endDate.split('-');
-        
-        const startDate = new Date(sy, sm - 1, sd);
-        const endDate = new Date(ey, em - 1, ed);
-        let loopDate = new Date(startDate);
-        
-        const isHourly = ast.isHourly || false; 
-        const hoursToReduce = ast.hours || 0;
-
-        // Loop INCLUINDO a data final (<=)
-        while (loopDate <= endDate) {
-            // Verifica se o loop cai no mês selecionado para exibição
-            if (loopDate.getMonth() === monthIndex && loopDate.getFullYear() === yearNum) {
-                let shouldProcess = true;
-                // Se estivermos no mês atual real, ignorar dias futuros
-                if (isRealCurrentMonth) {
-                    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                    if (loopDate > todayStart) shouldProcess = false;
-                }
-                
-                if (shouldProcess) {
-                    const d = String(loopDate.getDate()).padStart(2, '0');
-                    const m = String(loopDate.getMonth() + 1).padStart(2, '0');
-                    const y = loopDate.getFullYear();
-                    const dateStr = `${d}/${m}/${y}`;
-                    
-                    // Busca o dia na escala original
-                    const item = calculationData.find(i => i.Data === dateStr && i.Letra === person);
-                    
-                    // Só reduz se for um dia de trabalho na escala original
-                    if (item && item.Turno !== 'Folga') {
-                        if (isHourly) {
-                            // Atestado por hora: Reduz horas, MANTÉM contagem de dias
-                            totalSeconds[person] -= hoursToReduce * 3600;
-                        } else {
-                            // Atestado dia completo: Reduz 12h E reduz 1 dia trabalhado
-                            totalSeconds[person] -= 12 * 3600;
-                            workDays[person]--;
-                        }
-                    }
-                    // Se for dia de Folga na escala, o ícone aparece (visual), 
-                    // mas não reduz horas/dias pois o colaborador já não contaria esse dia.
-                }
+  ['A','B','C','D'].forEach(person => {
+    if (atestados[person]) atestados[person].forEach(ast => {
+      const [sy,sm,sd] = ast.startDate.split('-');
+      const [ey,em,ed] = ast.endDate.split('-');
+      let loopDate = new Date(sy, sm-1, sd);
+      const endDate = new Date(ey, em-1, ed);
+      while (loopDate <= endDate) {
+        if (loopDate.getMonth() === monthIndex && loopDate.getFullYear() === yearNum) {
+          let shouldProcess = true;
+          if (isRealCurrentMonth) { const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()); if (loopDate > todayStart) shouldProcess = false; }
+          if (shouldProcess) {
+            const d = String(loopDate.getDate()).padStart(2,'0'), m = String(loopDate.getMonth()+1).padStart(2,'0'), y = loopDate.getFullYear();
+            const item = calculationData.find(i => i.Data === `${d}/${m}/${y}` && i.Letra === person);
+            if (item && item.Turno !== 'Folga') {
+              if (ast.isHourly) totalSeconds[person] -= ast.hours * 3600;
+              else { totalSeconds[person] -= 12*3600; workDays[person]--; }
             }
-            loopDate.setDate(loopDate.getDate() + 1);
-        }
-      });
-    }
-    
-    // --- SPOTS (Loop Data Início -> Fim) ---
-    if (spots[person]) {
-      spots[person].forEach(sp => {
-        const [sy, sm, sd] = sp.startDate.split('-');
-        const [ey, em, ed] = sp.endDate.split('-');
-        const startDate = new Date(sy, sm - 1, sd);
-        const endDate = new Date(ey, em - 1, ed);
-        
-        let loopDate = new Date(startDate);
-        while (loopDate <= endDate) {
-            if (loopDate.getMonth() === monthIndex && loopDate.getFullYear() === yearNum) {
-                let shouldProcess = true;
-                if (isRealCurrentMonth) {
-                    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                    if (loopDate > todayStart) shouldProcess = false;
-                }
-                if (shouldProcess) {
-                    // Spots somam horas independente do dia ser trabalho ou folga
-                    totalSeconds[person] += (sp.hours || 12) * 3600;
-                }
-            }
-            loopDate.setDate(loopDate.getDate() + 1);
-        }
-      });
-    }
-
-    // --- EVENTOS (Loop Data Início -> Fim) ---
-    if (eventos[person]) {
-      eventos[person].forEach(evento => {
-        const [sy, sm, sd] = evento.startDate.split('-');
-        const [ey, em, ed] = evento.endDate.split('-');
-        const startDate = new Date(sy, sm - 1, sd);
-        const endDate = new Date(ey, em - 1, ed);
-
-        // FÉRIAS
-        if (evento.tipo === 'ferias') {
-            let loopDate = new Date(startDate);
-            while (loopDate <= endDate) {
-                if (loopDate.getMonth() === monthIndex && loopDate.getFullYear() === yearNum) {
-                    let shouldReduce = true;
-                    if (isRealCurrentMonth) {
-                        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                        if (loopDate > todayStart) shouldReduce = false;
-                    }
-                    if (shouldReduce) {
-                        const d = String(loopDate.getDate()).padStart(2, '0');
-                        const m = String(loopDate.getMonth() + 1).padStart(2, '0');
-                        const y = loopDate.getFullYear();
-                        const dateStr = `${d}/${m}/${y}`;
-                        const item = calculationData.find(i => i.Data === dateStr && i.Letra === person);
-                        if (item && item.Turno !== 'Folga') {
-                            totalSeconds[person] -= 12 * 3600;
-                            workDays[person]--;
-                        }
-                    }
-                }
-                loopDate.setDate(loopDate.getDate() + 1);
-            }
-        } 
-        // OUTROS EVENTOS (Viagem, Treinamento, etc) com horas personalizadas
-        else if (evento.horas > 0) {
-            if (startDate.getMonth() === monthIndex && startDate.getFullYear() === yearNum) {
-                const dayNum = startDate.getDate();
-                if (!isRealCurrentMonth || dayNum <= now.getDate()) {
-                    const lastDate = (isRealCurrentMonth && now < endDate) ? now : endDate;
-                    let daysInEvento = 1;
-                    if (endDate >= startDate) {
-                         daysInEvento = Math.floor((lastDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-                    }
-                    if (evento.horasTipo === 'acrescentar') {
-                        totalSeconds[person] += daysInEvento * evento.horas * 3600;
-                    } else {
-                        totalSeconds[person] -= daysInEvento * evento.horas * 3600;
-                    }
-                }
-            }
-        }
-      });
-    }
-
-    // --- ADM (Loop Data Início -> Fim) ---
-    if (adms[person]) {
-      adms[person].forEach(adm => {
-        const [sy, sm, sd] = adm.startDate.split('-');
-        const [ey, em, ed] = adm.endDate.split('-');
-        const startDate = new Date(sy, sm - 1, sd);
-        const endDate = new Date(ey, em - 1, ed);
-        
-        if (startDate.getMonth() === monthIndex && startDate.getFullYear() === yearNum) {
-          if (!isRealCurrentMonth || startDate <= new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
-            const admStartTime = adm.startTime.split(':');
-            const admEndTime = adm.endTime.split(':');
-            
-            const admDailySeconds = 
-              (parseInt(admEndTime[0]) - parseInt(admStartTime[0])) * 3600 +
-              (parseInt(admEndTime[1]) - parseInt(admStartTime[1])) * 60;
-            
-            const standardShiftSeconds = 12 * 3600;
-            const admAdjustment = admDailySeconds - standardShiftSeconds;
-            
-            const lastDate = (isRealCurrentMonth && now < endDate) ? now : endDate;
-            let daysInAdm = 1;
-            if (endDate >= startDate) {
-               daysInAdm = Math.floor((lastDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-            }
-            
-            totalSeconds[person] += admAdjustment * daysInAdm;
           }
         }
-      });
+        loopDate.setDate(loopDate.getDate() + 1);
+      }
+    });
+    if (spots[person]) spots[person].forEach(sp => {
+      const [sy,sm,sd] = sp.startDate.split('-');
+      const [ey,em,ed] = sp.endDate.split('-');
+      let loopDate = new Date(sy, sm-1, sd);
+      const endDate = new Date(ey, em-1, ed);
+      while (loopDate <= endDate) {
+        if (loopDate.getMonth() === monthIndex && loopDate.getFullYear() === yearNum) {
+          let shouldProcess = true;
+          if (isRealCurrentMonth) { const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()); if (loopDate > todayStart) shouldProcess = false; }
+          if (shouldProcess) totalSeconds[person] += (sp.hours || 12) * 3600;
+        }
+        loopDate.setDate(loopDate.getDate() + 1);
+      }
+    });
+    if (eventos[person]) eventos[person].forEach(evento => {
+      const [sy,sm,sd] = evento.startDate.split('-');
+      const [ey,em,ed] = evento.endDate.split('-');
+      const startDate = new Date(sy, sm-1, sd);
+      const endDate = new Date(ey, em-1, ed);
+      if (evento.tipo === 'ferias') {
+        let loopDate = new Date(startDate);
+        while (loopDate <= endDate) {
+          if (loopDate.getMonth() === monthIndex && loopDate.getFullYear() === yearNum) {
+            let shouldReduce = true;
+            if (isRealCurrentMonth) { const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()); if (loopDate > todayStart) shouldReduce = false; }
+            if (shouldReduce) {
+              const d = String(loopDate.getDate()).padStart(2,'0'), m = String(loopDate.getMonth()+1).padStart(2,'0'), y = loopDate.getFullYear();
+              const item = calculationData.find(i => i.Data === `${d}/${m}/${y}` && i.Letra === person);
+              if (item && item.Turno !== 'Folga') { totalSeconds[person] -= 12*3600; workDays[person]--; }
+            }
+          }
+          loopDate.setDate(loopDate.getDate() + 1);
+        }
+      } else if (evento.horas > 0) {
+        if (startDate.getMonth() === monthIndex && startDate.getFullYear() === yearNum) {
+          if (!isRealCurrentMonth || startDate.getDate() <= now.getDate()) {
+            const lastDate = (isRealCurrentMonth && now < endDate) ? now : endDate;
+            let days = Math.floor((lastDate - startDate) / (1000*60*60*24)) + 1;
+            if (evento.horasTipo === 'acrescentar') totalSeconds[person] += days * evento.horas * 3600;
+            else totalSeconds[person] -= days * evento.horas * 3600;
+          }
+        }
+      }
+    });
+    if (adms[person]) adms[person].forEach(adm => {
+      const [sy,sm,sd] = adm.startDate.split('-');
+      const [ey,em,ed] = adm.endDate.split('-');
+      const startDate = new Date(sy, sm-1, sd);
+      const endDate = new Date(ey, em-1, ed);
+      if (startDate.getMonth() === monthIndex && startDate.getFullYear() === yearNum) {
+        if (!isRealCurrentMonth || startDate <= new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
+          const [sH,sM] = adm.startTime.split(':');
+          const [eH,eM] = adm.endTime.split(':');
+          const admSecs = (parseInt(eH)-parseInt(sH))*3600 + (parseInt(eM)-parseInt(sM))*60;
+          const adj = admSecs - 12*3600;
+          const lastDate = (isRealCurrentMonth && now < endDate) ? now : endDate;
+          const days = Math.floor((lastDate - startDate) / (1000*60*60*24)) + 1;
+          totalSeconds[person] += adj * days;
+        }
+      }
+    });
+    const hoursEl = document.getElementById(`hours-${person}`);
+    const daysEl = document.getElementById(`days-${person}`);
+    const totalDaysEl = document.getElementById(`total-days-${person}`);
+    if (hoursEl) {
+      const h = Math.floor(totalSeconds[person]/3600);
+      const mi = Math.floor((totalSeconds[person]%3600)/60);
+      const s = Math.floor(totalSeconds[person]%60);
+      hoursEl.textContent = `Horas trabalhadas: ${h}h ${mi}m ${s}s`;
     }
-    
-    // Atualizar UI
-    const hoursElement = document.getElementById(`hours-${person}`);
-    const daysElement = document.getElementById(`days-${person}`);
-    const totalDaysElement = document.getElementById(`total-days-${person}`);
-    
-    if (hoursElement) {
-      const hours = Math.floor(totalSeconds[person] / 3600);
-      const minutes = Math.floor((totalSeconds[person] % 3600) / 60);
-      const seconds = Math.floor(totalSeconds[person] % 60);
-      hoursElement.textContent = `Horas trabalhadas: ${hours}h ${minutes}m ${seconds}s`;
-    }
-    
-    if (daysElement) {
-      const displayDays = workDays[person] < 0 ? 0 : workDays[person];
-      daysElement.textContent = `Dias trabalhados: ${displayDays}`;
-    }
-    
-    if (totalDaysElement) {
-      totalDaysElement.textContent = `Dias no mês: ${totalDays[person]}`;
-    }
+    if (daysEl) daysEl.textContent = `Dias trabalhados: ${Math.max(0, workDays[person])}`;
+    if (totalDaysEl) totalDaysEl.textContent = `Dias no mês: ${totalDays[person]}`;
   });
 }
 
-// Função para ocultar/mostrar campo de horas no modal
 function toggleEventoFields() {
   const tipo = document.getElementById('evento-tipo').value;
-  const horasContainer = document.getElementById('evento-horas-container');
-  if (tipo === 'ferias' || tipo === 'folga') {
-    horasContainer.style.display = 'none';
-  } else {
-    horasContainer.style.display = 'block';
-  }
+  document.getElementById('evento-horas-container').style.display = (tipo === 'ferias' || tipo === 'folga') ? 'none' : 'block';
 }
-
-// --- NOVA FUNÇÃO: Toggle Atestado por Hora ---
 function toggleAtestadoHoras() {
-    const checkbox = document.getElementById('atestado-por-hora');
-    const horasDiv = document.getElementById('atestado-horas-div');
-    const defaultText = document.getElementById('atestado-default-text');
-
-    if (checkbox.checked) {
-        horasDiv.style.display = 'block';
-        defaultText.style.display = 'none';
-    } else {
-        horasDiv.style.display = 'none';
-        defaultText.style.display = 'block';
-    }
+  const checked = document.getElementById('atestado-por-hora').checked;
+  document.getElementById('atestado-horas-div').style.display = checked ? 'block' : 'none';
+  document.getElementById('atestado-default-text').style.display = checked ? 'none' : 'block';
 }
+function getPersonName(l) { return {A:'Wesley',B:'Marcos Paulo',C:'Higor Ataides',D:'Marcelo Gonçalves'}[l]||''; }
 
-// Funções dos modais
 function openAtestadoModal(person) {
   currentPerson = person;
   document.getElementById('atestado-modal-person').textContent = `Colaborador: ${getPersonName(person)}`;
-  
-  const atestadoList = document.getElementById('atestado-list');
-  atestadoList.innerHTML = '';
-  
-  if (atestados[person] && atestados[person].length > 0) {
-    atestados[person].forEach((ast, index) => {
-      const atestadoItem = document.createElement('div');
-      atestadoItem.style.display = 'flex';
-      atestadoItem.style.justifyContent = 'space-between';
-      atestadoItem.style.marginBottom = '5px';
-      
-      const dateSpan = document.createElement('span');
-      // Formatação para exibição incluindo info de horas
-      let displayText = `${ast.startDate} a ${ast.endDate}`;
-      if (ast.isHourly) {
-          displayText += ` (${ast.hours}h)`;
-      }
-      dateSpan.textContent = displayText;
-      
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = '×';
-      deleteBtn.style.color = '#e74c3c';
-      deleteBtn.style.border = 'none';
-      deleteBtn.style.background = 'none';
-      deleteBtn.style.cursor = 'pointer';
-      deleteBtn.style.fontWeight = 'bold';
-      deleteBtn.style.marginLeft = '10px';
-      deleteBtn.onclick = () => deleteAtestado(person, index);
-      
-      atestadoItem.appendChild(dateSpan);
-      atestadoItem.appendChild(deleteBtn);
-      atestadoList.appendChild(atestadoItem);
+  const list = document.getElementById('atestado-list');
+  list.innerHTML = '';
+  if (atestados[person]?.length > 0) {
+    atestados[person].forEach((ast, i) => {
+      const div = document.createElement('div');
+      div.style.cssText = 'display:flex;justify-content:space-between;margin-bottom:5px;';
+      let txt = `${ast.startDate} a ${ast.endDate}`;
+      if (ast.isHourly) txt += ` (${ast.hours}h)`;
+      div.innerHTML = `<span>${txt}</span><button onclick="deleteAtestado('${person}',${i})" style="color:#e74c3c;border:none;background:none;cursor:pointer;font-weight:bold;">×</button>`;
+      list.appendChild(div);
     });
-  } else {
-    atestadoList.innerHTML = '<div style="color: #777;">Nenhum atestado registrado</div>';
-  }
-  
-  // Resetar campos do formulário
-  document.getElementById('atestado-start-date').value = '';
-  document.getElementById('atestado-end-date').value = '';
-  document.getElementById('atestado-por-hora').checked = false;
-  document.getElementById('atestado-horas-input').value = '1';
-  toggleAtestadoHoras(); // Garante estado visual correto
-  
-  document.getElementById('atestado-modal').style.display = 'flex';
-}
-
-function deleteAtestado(person, index) {
-  if (confirm(`Remover este atestado?`)) {
-    atestados[person].splice(index, 1);
-    saveDataToServer(); // Salva no servidor
-    openAtestadoModal(person);
-    calculateHoursWorked();
-    generateTableFromJSON(); 
-  }
-}
-
-function closeAtestadoModal() {
-  document.getElementById('atestado-modal').style.display = 'none';
-}
-
-function saveAtestado() {
-  const startDate = document.getElementById('atestado-start-date').value;
-  const endDate = document.getElementById('atestado-end-date').value;
-  
-  if (!startDate || !endDate) {
-    alert('Preencha as datas!');
-    return;
-  }
-
-  // Ler novos campos
-  const isHourly = document.getElementById('atestado-por-hora').checked;
-  const hours = parseInt(document.getElementById('atestado-horas-input').value) || 0;
-
-  if (isHourly && hours <= 0) {
-    alert('Para atestado por hora, informe a quantidade de horas!');
-    return;
-  }
-
-  if (!atestados[currentPerson]) atestados[currentPerson] = [];
-
-  atestados[currentPerson].push({ 
-      startDate, 
-      endDate, 
-      isHourly, 
-      hours 
-  });
-  
-  saveDataToServer(); // Salva no servidor
-
+  } else list.innerHTML = '<div style="color:#777">Nenhum atestado registrado</div>';
   document.getElementById('atestado-start-date').value = '';
   document.getElementById('atestado-end-date').value = '';
   document.getElementById('atestado-por-hora').checked = false;
   document.getElementById('atestado-horas-input').value = '1';
   toggleAtestadoHoras();
-  
+  document.getElementById('atestado-modal').style.display = 'flex';
+}
+function deleteAtestado(person, i) { if (confirm('Remover este atestado?')) { atestados[person].splice(i,1); saveDataToServer(); openAtestadoModal(person); calculateHoursWorked(); generateTableFromJSON(); } }
+function closeAtestadoModal() { document.getElementById('atestado-modal').style.display = 'none'; }
+function saveAtestado() {
+  const s = document.getElementById('atestado-start-date').value;
+  const e = document.getElementById('atestado-end-date').value;
+  if (!s||!e) { alert('Preencha as datas!'); return; }
+  const isHourly = document.getElementById('atestado-por-hora').checked;
+  const hours = parseInt(document.getElementById('atestado-horas-input').value)||0;
+  if (isHourly && hours <= 0) { alert('Informe a quantidade de horas!'); return; }
+  if (!atestados[currentPerson]) atestados[currentPerson] = [];
+  atestados[currentPerson].push({startDate:s,endDate:e,isHourly,hours});
+  saveDataToServer();
   openAtestadoModal(currentPerson);
   calculateHoursWorked();
   generateTableFromJSON();
@@ -15459,74 +10729,28 @@ function saveAtestado() {
 function openSpotModal(person) {
   currentPerson = person;
   document.getElementById('spot-modal-person').textContent = `Colaborador: ${getPersonName(person)}`;
-  
-  const spotList = document.getElementById('spot-list');
-  spotList.innerHTML = '';
-  
-  if (spots[person] && spots[person].length > 0) {
-    spots[person].forEach((sp, index) => {
-      const spotItem = document.createElement('div');
-      spotItem.style.display = 'flex';
-      spotItem.style.justifyContent = 'space-between';
-      spotItem.style.marginBottom = '5px';
-      
-      const dateSpan = document.createElement('span');
-      dateSpan.textContent = `${sp.startDate} a ${sp.endDate} (${sp.hours}h/d)`;
-      
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = '×';
-      deleteBtn.style.color = '#e74c3c';
-      deleteBtn.style.border = 'none';
-      deleteBtn.style.background = 'none';
-      deleteBtn.style.cursor = 'pointer';
-      deleteBtn.style.fontWeight = 'bold';
-      deleteBtn.style.marginLeft = '10px';
-      deleteBtn.onclick = () => deleteSpot(person, index);
-      
-      spotItem.appendChild(dateSpan);
-      spotItem.appendChild(deleteBtn);
-      spotList.appendChild(spotItem);
+  const list = document.getElementById('spot-list');
+  list.innerHTML = '';
+  if (spots[person]?.length > 0) {
+    spots[person].forEach((sp, i) => {
+      const div = document.createElement('div');
+      div.style.cssText = 'display:flex;justify-content:space-between;margin-bottom:5px;';
+      div.innerHTML = `<span>${sp.startDate} a ${sp.endDate} (${sp.hours}h/d)</span><button onclick="deleteSpot('${person}',${i})" style="color:#e74c3c;border:none;background:none;cursor:pointer;font-weight:bold;">×</button>`;
+      list.appendChild(div);
     });
-  } else {
-    spotList.innerHTML = '<div style="color: #777;">Nenhum spot registrado</div>';
-  }
-  
+  } else list.innerHTML = '<div style="color:#777">Nenhum spot registrado</div>';
   document.getElementById('spot-modal').style.display = 'flex';
 }
-
-function deleteSpot(person, index) {
-  if (confirm(`Remover este spot?`)) {
-    spots[person].splice(index, 1);
-    saveDataToServer(); // Salva no servidor
-    openSpotModal(person);
-    calculateHoursWorked();
-    generateTableFromJSON();
-  }
-}
-
-function closeSpotModal() {
-  document.getElementById('spot-modal').style.display = 'none';
-}
-
+function deleteSpot(person, i) { if (confirm('Remover este spot?')) { spots[person].splice(i,1); saveDataToServer(); openSpotModal(person); calculateHoursWorked(); generateTableFromJSON(); } }
+function closeSpotModal() { document.getElementById('spot-modal').style.display = 'none'; }
 function saveSpot() {
-  const startDate = document.getElementById('spot-start-date').value;
-  const endDate = document.getElementById('spot-end-date').value;
-  const hours = document.getElementById('spot-hours').value;
-  
-  if (!startDate || !endDate || !hours) {
-    alert('Preencha todos os campos!');
-    return;
-  }
-
+  const s = document.getElementById('spot-start-date').value;
+  const e = document.getElementById('spot-end-date').value;
+  const h = document.getElementById('spot-hours').value;
+  if (!s||!e||!h) { alert('Preencha todos os campos!'); return; }
   if (!spots[currentPerson]) spots[currentPerson] = [];
-
-  spots[currentPerson].push({ startDate, endDate, hours: parseInt(hours) });
-  saveDataToServer(); // Salva no servidor
-
-  document.getElementById('spot-start-date').value = '';
-  document.getElementById('spot-end-date').value = '';
-  document.getElementById('spot-hours').value = '12';
-  
+  spots[currentPerson].push({startDate:s,endDate:e,hours:parseInt(h)});
+  saveDataToServer();
   openSpotModal(currentPerson);
   calculateHoursWorked();
   generateTableFromJSON();
@@ -15535,80 +10759,29 @@ function saveSpot() {
 function openAdmModal(person) {
   currentPerson = person;
   document.getElementById('adm-modal-person').textContent = `Colaborador: ${getPersonName(person)}`;
-  
-  const admList = document.getElementById('adm-list');
-  admList.innerHTML = '';
-  
-  if (adms[person] && adms[person].length > 0) {
-    adms[person].forEach((adm, index) => {
-      const admItem = document.createElement('div');
-      admItem.style.display = 'flex';
-      admItem.style.justifyContent = 'space-between';
-      admItem.style.marginBottom = '5px';
-      
-      const dateSpan = document.createElement('span');
-      dateSpan.textContent = `${adm.startDate} a ${adm.endDate} (${adm.startTime}-${adm.endTime})`;
-      
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = '×';
-      deleteBtn.style.color = '#e74c3c';
-      deleteBtn.style.border = 'none';
-      deleteBtn.style.background = 'none';
-      deleteBtn.style.cursor = 'pointer';
-      deleteBtn.style.fontWeight = 'bold';
-      deleteBtn.style.marginLeft = '10px';
-      deleteBtn.onclick = () => deleteAdm(person, index);
-      
-      admItem.appendChild(dateSpan);
-      admItem.appendChild(deleteBtn);
-      admList.appendChild(admItem);
+  const list = document.getElementById('adm-list');
+  list.innerHTML = '';
+  if (adms[person]?.length > 0) {
+    adms[person].forEach((adm, i) => {
+      const div = document.createElement('div');
+      div.style.cssText = 'display:flex;justify-content:space-between;margin-bottom:5px;';
+      div.innerHTML = `<span>${adm.startDate} a ${adm.endDate} (${adm.startTime}-${adm.endTime})</span><button onclick="deleteAdm('${person}',${i})" style="color:#e74c3c;border:none;background:none;cursor:pointer;font-weight:bold;">×</button>`;
+      list.appendChild(div);
     });
-  } else {
-    admList.innerHTML = '<div style="color: #777;">Nenhum período ADM registrado</div>';
-  }
-  
+  } else list.innerHTML = '<div style="color:#777">Nenhum período ADM registrado</div>';
   document.getElementById('adm-modal').style.display = 'flex';
 }
-
-function deleteAdm(person, index) {
-  if (confirm(`Remover período ADM?`)) {
-    adms[person].splice(index, 1);
-    saveDataToServer(); // Salva no servidor
-    openAdmModal(person);
-    calculateHoursWorked();
-    generateTableFromJSON();
-  }
-}
-
-function closeAdmModal() {
-  document.getElementById('adm-modal').style.display = 'none';
-}
-
+function deleteAdm(person, i) { if (confirm('Remover período ADM?')) { adms[person].splice(i,1); saveDataToServer(); openAdmModal(person); calculateHoursWorked(); generateTableFromJSON(); } }
+function closeAdmModal() { document.getElementById('adm-modal').style.display = 'none'; }
 function saveAdm() {
-  const startDate = document.getElementById('adm-start-date').value;
-  const endDate = document.getElementById('adm-end-date').value;
-  const startTime = document.getElementById('adm-start-time').value;
-  const endTime = document.getElementById('adm-end-time').value;
-  
-  if (!startDate || !endDate || !startTime || !endTime) {
-    alert('Preencha todos os campos!');
-    return;
-  }
-
+  const s = document.getElementById('adm-start-date').value;
+  const e = document.getElementById('adm-end-date').value;
+  const st = document.getElementById('adm-start-time').value;
+  const et = document.getElementById('adm-end-time').value;
+  if (!s||!e||!st||!et) { alert('Preencha todos os campos!'); return; }
   if (!adms[currentPerson]) adms[currentPerson] = [];
-
-  adms[currentPerson].push({
-    startDate,
-    endDate,
-    startTime,
-    endTime
-  });
-  
-  saveDataToServer(); // Salva no servidor
-  
-  document.getElementById('adm-start-date').value = '';
-  document.getElementById('adm-end-date').value = '';
-  
+  adms[currentPerson].push({startDate:s,endDate:e,startTime:st,endTime:et});
+  saveDataToServer();
   openAdmModal(currentPerson);
   calculateHoursWorked();
   generateTableFromJSON();
@@ -15617,279 +10790,80 @@ function saveAdm() {
 function openEventoModal(person) {
   currentPerson = person;
   document.getElementById('evento-modal-person').textContent = `Colaborador: ${getPersonName(person)}`;
-  
-  const eventoList = document.getElementById('evento-list');
-  eventoList.innerHTML = '';
-  
-  if (eventos[person] && eventos[person].length > 0) {
-    eventos[person].forEach((evento, index) => {
-      const eventoItem = document.createElement('div');
-      eventoItem.style.display = 'flex';
-      eventoItem.style.justifyContent = 'space-between';
-      eventoItem.style.marginBottom = '5px';
-      
-      const dateSpan = document.createElement('span');
-      dateSpan.textContent = `${evento.tipo} (${evento.startDate} a ${evento.endDate})`;
-      
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = '×';
-      deleteBtn.style.color = '#e74c3c';
-      deleteBtn.style.border = 'none';
-      deleteBtn.style.background = 'none';
-      deleteBtn.style.cursor = 'pointer';
-      deleteBtn.style.fontWeight = 'bold';
-      deleteBtn.style.marginLeft = '10px';
-      deleteBtn.onclick = () => deleteEvento(person, index);
-      
-      eventoItem.appendChild(dateSpan);
-      eventoItem.appendChild(deleteBtn);
-      eventoList.appendChild(eventoItem);
+  const list = document.getElementById('evento-list');
+  list.innerHTML = '';
+  if (eventos[person]?.length > 0) {
+    eventos[person].forEach((ev, i) => {
+      const div = document.createElement('div');
+      div.style.cssText = 'display:flex;justify-content:space-between;margin-bottom:5px;';
+      div.innerHTML = `<span>${ev.tipo} (${ev.startDate} a ${ev.endDate})</span><button onclick="deleteEvento('${person}',${i})" style="color:#e74c3c;border:none;background:none;cursor:pointer;font-weight:bold;">×</button>`;
+      list.appendChild(div);
     });
-  } else {
-    eventoList.innerHTML = '<div style="color: #777;">Nenhum evento registrado</div>';
-  }
-  
+  } else list.innerHTML = '<div style="color:#777">Nenhum evento registrado</div>';
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('evento-start-date').value = today;
   document.getElementById('evento-end-date').value = today;
-  
   toggleEventoFields();
-  
   document.getElementById('evento-modal').style.display = 'flex';
 }
-
-function deleteEvento(person, index) {
-  if (confirm(`Remover este evento?`)) {
-    eventos[person].splice(index, 1);
-    saveDataToServer(); // Salva no servidor
-    openEventoModal(person);
-    calculateHoursWorked();
-    generateTableFromJSON();
-  }
-}
-
-function closeEventoModal() {
-  document.getElementById('evento-modal').style.display = 'none';
-}
-
+function deleteEvento(person, i) { if (confirm('Remover este evento?')) { eventos[person].splice(i,1); saveDataToServer(); openEventoModal(person); calculateHoursWorked(); generateTableFromJSON(); } }
+function closeEventoModal() { document.getElementById('evento-modal').style.display = 'none'; }
 function saveEvento() {
   const tipo = document.getElementById('evento-tipo').value;
-  const startDate = document.getElementById('evento-start-date').value;
-  const endDate = document.getElementById('evento-end-date').value;
-  const horas = document.getElementById('evento-horas').value || 0;
+  const s = document.getElementById('evento-start-date').value;
+  const e = document.getElementById('evento-end-date').value;
+  const horas = document.getElementById('evento-horas').value||0;
   const horasTipo = document.querySelector('input[name="evento-horas-tipo"]:checked').value;
-  
-  if (!startDate || !endDate) {
-    alert('Preencha as datas!');
-    return;
-  }
-
+  if (!s||!e) { alert('Preencha as datas!'); return; }
   if (!eventos[currentPerson]) eventos[currentPerson] = [];
-
-  eventos[currentPerson].push({
-    tipo,
-    startDate,
-    endDate,
-    horas: parseInt(horas),
-    horasTipo
-  });
-  
-  saveDataToServer(); // Salva no servidor
-
-  document.getElementById('evento-start-date').value = '';
-  document.getElementById('evento-end-date').value = '';
-  document.getElementById('evento-horas').value = '';
-  
+  eventos[currentPerson].push({tipo,startDate:s,endDate:e,horas:parseInt(horas),horasTipo});
+  saveDataToServer();
   openEventoModal(currentPerson);
   calculateHoursWorked();
   generateTableFromJSON();
 }
 
-// Geração de PowerPoint
 async function generatePowerPointReport() {
   const pptx = new PptxGenJS();
   const selectedMonth = document.getElementById('filter-month').value;
   const [month, year] = selectedMonth.split('/');
   const monthIndex = parseInt(month) - 1;
-  
   let slide = pptx.addSlide();
-  slide.addText(`Relatório de Escala - ${months[monthIndex]}/${year}`, {
-    x: 1, y: 0.5, w: '90%', h: 0.8,
-    fontSize: 24, bold: true, align: 'center'
-  });
-  
-  ['A', 'B', 'C', 'D'].forEach(person => {
+  slide.addText(`Relatório de Escala - ${months[monthIndex]}/${year}`, {x:1,y:0.5,w:'90%',h:0.8,fontSize:24,bold:true,align:'center'});
+  ['A','B','C','D'].forEach(person => {
     slide = pptx.addSlide();
-    slide.addText(getPersonName(person), {
-      x: 1, y: 0.5, w: '90%', h: 0.8,
-      fontSize: 20, bold: true, align: 'center'
-    });
-    
-    const totalDays = document.getElementById(`total-days-${person}`).textContent;
-    const daysWorked = document.getElementById(`days-${person}`).textContent;
-    const hoursWorked = document.getElementById(`hours-${person}`).textContent;
-    
-    slide.addText([
-      { text: totalDays + '\n', options: { fontSize: 14 } },
-      { text: daysWorked + '\n', options: { fontSize: 14 } },
-      { text: hoursWorked + '\n\n', options: { fontSize: 14 } }
-    ], { x: 1, y: 1.5, w: '90%', h: 1.5 });
-    
-    // Atualizado para mostrar info de horas no atestado
-    let atestadoText = 'Atestados:\n';
-    if (atestados[person] && atestados[person].length > 0) {
-      atestados[person].forEach(ast => {
-          let detail = '';
-          if(ast.isHourly) {
-              detail = ` (${ast.hours}h)`;
-          } else {
-              detail = ' (12h - Dia completo)';
-          }
-          atestadoText += `- ${ast.startDate} a ${ast.endDate}${detail}\n`;
-      });
-    } else {
-      atestadoText += 'Nenhum atestado registrado\n';
-    }
-    
-    let spotText = '\nSpots:\n';
-    if (spots[person] && spots[person].length > 0) {
-      spots[person].forEach(sp => {
-        spotText += `- ${sp.startDate} a ${sp.endDate}: +${sp.hours}h/dia\n`;
-      });
-    } else {
-      spotText += 'Nenhum spot registrado\n';
-    }
-    
-    let admText = '\nPeríodos ADM:\n';
-    if (adms[person] && adms[person].length > 0) {
-      adms[person].forEach(adm => {
-        const duration = calculateAdmDuration(adm.startTime, adm.endTime);
-        admText += `- ${adm.startDate} a ${adm.endDate}: ${duration}h/dia\n`;
-      });
-    } else {
-      admText += 'Nenhum período ADM registrado\n';
-    }
-
-    let eventoText = '\nEventos:\n';
-    if (eventos[person] && eventos[person].length > 0) {
-      eventos[person].forEach(evento => {
-        let displayText = `- ${evento.tipo.charAt(0).toUpperCase() + evento.tipo.slice(1)}: ${evento.startDate} a ${evento.endDate}`;
-        if (evento.tipo === 'ferias') {
-           displayText += ' (Redução Auto)';
-        } else if (evento.horas > 0) {
-           displayText += ` (${evento.horasTipo === 'acrescentar' ? '+' : '-'}${evento.horas}h)`;
-        }
-        displayText += '\n';
-        eventoText += displayText;
-      });
-    } else {
-      eventoText += 'Nenhum evento registrado\n';
-    }
-    
-    slide.addText([
-      { text: atestadoText, options: { fontSize: 12 } },
-      { text: spotText, options: { fontSize: 12 } },
-      { text: admText, options: { fontSize: 12 } },
-      { text: eventoText, options: { fontSize: 12 } }
-    ], { x: 1, y: 3, w: '90%', h: 3 });
+    slide.addText(getPersonName(person), {x:1,y:0.5,w:'90%',h:0.8,fontSize:20,bold:true,align:'center'});
+    const info = [
+      document.getElementById(`total-days-${person}`).textContent,
+      document.getElementById(`days-${person}`).textContent,
+      document.getElementById(`hours-${person}`).textContent,
+    ].join('\n');
+    slide.addText(info, {x:1,y:1.5,w:'90%',h:1.5,fontSize:14});
   });
-
-  slide = pptx.addSlide();
-  slide.addText('Visão Geral', {
-    x: 1, y: 0.5, w: '90%', h: 0.8,
-    fontSize: 24, bold: true, align: 'center'
-  });
-  
-  let totalHours = 0;
-  let totalDaysWorked = 0;
-  let totalAtestados = 0;
-  let totalSpotHours = 0;
-  let totalAdmDays = 0;
-  let totalEventDays = 0;
-
-  ['A', 'B', 'C', 'D'].forEach(person => {
-    const hoursText = document.getElementById(`hours-${person}`).textContent;
-    const hoursMatch = hoursText.match(/(-?\d+)h (\d+)m (\d+)s/);
-    if (hoursMatch) {
-      totalHours += parseInt(hoursMatch[1]) * 3600 + parseInt(hoursMatch[2]) * 60 + parseInt(hoursMatch[3]);
-    }
-
-    const daysText = document.getElementById(`days-${person}`).textContent;
-    const daysMatch = daysText.match(/\d+/);
-    if (daysMatch) {
-      totalDaysWorked += parseInt(daysMatch[0]);
-    }
-
-    if (atestados[person]) totalAtestados += atestados[person].length;
-    if (spots[person]) {
-        totalSpotHours += spots[person].reduce((acc, curr) => acc + (curr.hours || 0), 0);
-    }
-    if (adms[person]) {
-      adms[person].forEach(adm => {
-        const startDate = new Date(adm.startDate);
-        const endDate = new Date(adm.endDate);
-        const days = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-        totalAdmDays += days;
-      });
-    }
-    if (eventos[person]) {
-      eventos[person].forEach(evento => {
-        const startDate = new Date(evento.startDate);
-        const endDate = new Date(evento.endDate);
-        const days = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-        totalEventDays += days;
-      });
-    }
-  });
-
-  const formattedHours = `${Math.floor(totalHours / 3600)}h ${Math.floor((totalHours % 3600) / 60)}m ${Math.abs(totalHours % 60)}s`;
-
-  slide.addText([
-    { text: `Total de Horas Trabalhadas: ${formattedHours}\n`, options: { fontSize: 16 } },
-    { text: `Total de Dias Trabalhados: ${totalDaysWorked}\n`, options: { fontSize: 16 } },
-    { text: `Total de Atestados: ${totalAtestados}\n`, options: { fontSize: 16 } },
-    { text: `Total de Horas Spot: ${totalSpotHours}h\n`, options: { fontSize: 16 } },
-    { text: `Total de Dias em ADM: ${totalAdmDays}\n`, options: { fontSize: 16 } },
-    { text: `Total de Dias com Eventos: ${totalEventDays}`, options: { fontSize: 16 } }
-  ], { x: 1, y: 2, w: '90%', h: 3 });
-  
-  pptx.writeFile({ fileName: `Relatorio_Escala_${months[monthIndex]}_${year}.pptx` });
+  pptx.writeFile({fileName:`Relatorio_Escala_${months[monthIndex]}_${year}.pptx`});
 }
 
-// Funções auxiliares
-function getPersonName(letter) {
-  const names = {
-    'A': 'Wesley',
-    'B': 'Marcos Paulo',
-    'C': 'Higor Ataides',
-    'D': 'Marcelo Gonçalves'
-  };
-  return names[letter] || '';
+function calculateAdmDuration(s, e) {
+  const [sh,sm] = s.split(':').map(Number);
+  const [eh,em] = e.split(':').map(Number);
+  let h = eh-sh, m = em-sm;
+  if (m<0) {h--;m+=60;}
+  return `${h}h${m}m`;
 }
 
-function calculateAdmDuration(startTime, endTime) {
-  const [startH, startM] = startTime.split(':').map(Number);
-  const [endH, endM] = endTime.split(':').map(Number);
-  let hours = endH - startH;
-  let minutes = endM - startM;
-  if (minutes < 0) { hours--; minutes += 60; }
-  return `${hours}h${minutes}m`;
-}
-
-// Inicializar a página quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
-  // Carregar dados do servidor antes de tudo
   loadDataFromServer();
-
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('adm-start-date').value = today;
   document.getElementById('adm-end-date').value = today;
-  
-  document.getElementById('filter-month').value = getCurrentMonthYear();
-  
+  // Set default month to current or first available
+  const now = new Date();
+  const cur = `${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
+  const sel = document.getElementById('filter-month');
+  const opt = Array.from(sel.options).find(o => o.value === cur);
+  if (opt) sel.value = cur;
+  else sel.value = '05/2026';
   generateTableFromJSON();
-  
-  // Atualizar horas trabalhadas a cada segundo (para o efeito de tempo real)
   setInterval(calculateHoursWorked, 1000);
 });
 </script>
